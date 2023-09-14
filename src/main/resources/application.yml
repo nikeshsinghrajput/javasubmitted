@@ -1,0 +1,26 @@
+server:
+  port: 8003
+eureka:
+  instance:
+    hostname: localhost
+spring:
+  application:
+    name: Api-getway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: contact-service
+          uri: lb://contact-service
+          predicates:
+            - Path=/contact/**
+ 
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: contact-service
+#        uri: lb://contact-service                                  #https://example.or
+#        predicates:
+#        - Cookie=/contact/**
